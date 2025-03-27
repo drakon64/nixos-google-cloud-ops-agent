@@ -1,5 +1,5 @@
 {
-  pkgs ? import (import ./npins).nixpkgs { },
+  pkgs ? import (import ./npins).nixos-unstable { },
 }:
 {
   ops-agent = pkgs.callPackage ./ops-agent { };
