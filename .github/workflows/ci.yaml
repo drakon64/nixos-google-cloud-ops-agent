@@ -5,9 +5,19 @@ on:
     branches:
      - main
 
+    paths:
+      - default.nix
+      - ops-agent/default.nix
+      - npins/*
+
   pull_request:
     branches:
      - main
+
+    paths:
+      - default.nix
+      - ops-agent/default.nix
+      - npins/*
 
   workflow_dispatch:
 
