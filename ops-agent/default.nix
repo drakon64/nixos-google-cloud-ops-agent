@@ -11,7 +11,7 @@ in
 buildGoModule {
   inherit pname version;
 
-  # Fails for some reason
+  # TODO: Fix `tar: This does not look like a tar archive`
   #src = fetchFromGitHub {
   #  owner = "GoogleCloudPlatform";
   #  repo = pname;
@@ -19,6 +19,7 @@ buildGoModule {
   #  hash = "";
   #};
 
+  # TODO: Replace this with fetchFromGitHub
   src = fetchzip {
     url = "https://github.com/GoogleCloudPlatform/${pname}/archive/refs/tags/${version}.tar.gz";
     hash = "sha256-qvtk9pWzdSptD60EUPxxZ686hwM22iIN5k+bLM5mzPU=";
