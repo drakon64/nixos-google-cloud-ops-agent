@@ -20,6 +20,11 @@ buildGoModule {
 
   vendorHash = "sha256-+va+DvV2ZJ9cPz/fww1KnPFuoAct6RbRMA4mlQA8xxw=";
 
+  excludedPackages = [
+    "submodules/fluent-bit"
+    "submodules/opentelemetry-operations-collector"
+  ];
+
   checkFlags =
     let
       # Skip tests that require network access
