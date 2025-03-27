@@ -28,6 +28,8 @@ buildGoModule {
     [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
 
   meta = {
+    description = "Ops Agents that are part of the Google Cloud Operations product suite";
+    homepage = "https://cloud.google.com/stackdriver/docs/solutions/agents/ops-agent";
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
   };
