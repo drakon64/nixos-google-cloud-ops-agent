@@ -1,13 +1,13 @@
 name: CI
 
 on:
-#  push:
-#    branches:
-#     - main
+  push:
+    branches:
+     - main
 
-#  pull_request:
-#    branches:
-#     - main
+  pull_request:
+    branches:
+     - main
 
   workflow_dispatch:
 
@@ -34,4 +34,13 @@ jobs:
           name: drakon64-nixos-ops-agent
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - run: nix-build -A ops-agent
+      - name: Build
+        run: |
+          nix-build -A ops-agent
+          echo "STORE_PATH=$(nix eval --raw --file default.nix ops-agent)" >> "$GITHUB_ENV"
+
+      - name: Push to Cachix
+        run: echo "$STORE_PATH" | cachix push drakon64-nixos-ops-agent
+
+      - name: Pin in Cachix
+        run: cachix pin drakon64-nixos-ops-agent ${{ matrix.architecture.system }} "$STORE_PATH" --keep-revisions 1
