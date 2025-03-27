@@ -36,5 +36,6 @@ buildGoModule {
 
   meta = {
     license = lib.licenses.asl20;
+    platforms = lib.platforms.linux;
   };
 }
