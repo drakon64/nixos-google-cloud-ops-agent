@@ -7,7 +7,7 @@ on:
 
     paths:
       - default.nix
-      - ops-agent/default.nix
+      - google-cloud-ops-agent/default.nix
       - npins/*
 
   pull_request:
@@ -16,7 +16,7 @@ on:
 
     paths:
       - default.nix
-      - ops-agent/default.nix
+      - google-cloud-ops-agent/default.nix
       - npins/*
 
   workflow_dispatch:
@@ -41,16 +41,16 @@ jobs:
 
       - uses: cachix/cachix-action@v16
         with:
-          name: drakon64-nixos-ops-agent
+          name: drakon64-nixos-gcp-ops-agent
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Build
         run: |
-          nix-build -A ops-agent
-          echo "STORE_PATH=$(nix eval --raw --file default.nix ops-agent)" >> "$GITHUB_ENV"
+          nix-build -A google-cloud-ops-agent
+          echo "STORE_PATH=$(nix eval --raw --file default.nix google-cloud-ops-agent)" >> "$GITHUB_ENV"
 
       - name: Push to Cachix
-        run: echo "$STORE_PATH" | cachix push drakon64-nixos-ops-agent
+        run: echo "$STORE_PATH" | cachix push drakon64-nixos-gcp-ops-agent
 
       - name: Pin in Cachix
-        run: cachix pin drakon64-nixos-ops-agent ${{ matrix.architecture.system }} "$STORE_PATH" --keep-revisions 1
+        run: cachix pin drakon64-nixos-gcp-ops-agent ${{ matrix.architecture.system }} "$STORE_PATH" --keep-revisions 1

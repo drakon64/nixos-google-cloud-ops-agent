@@ -1,1 +1,1 @@
-# nixos-ops-agent
+# nixos-google-cloud-ops-agent

@@ -2,5 +2,5 @@
   pkgs ? import (import ./npins).nixos-unstable { },
 }:
 {
-  ops-agent = pkgs.callPackage ./ops-agent { };
+  google-cloud-ops-agent = pkgs.callPackage ./google-cloud-ops-agent { };
 }

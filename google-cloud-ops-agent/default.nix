@@ -4,15 +4,15 @@
   buildGoModule,
 }:
 let
-  pname = "ops-agent";
   version = "2.55.0";
 in
 buildGoModule {
-  inherit pname version;
+  pname = "google-cloud-ops-agent";
+  inherit version;
 
   src = fetchFromGitHub {
     owner = "GoogleCloudPlatform";
-    repo = pname;
+    repo = "ops-agent";
     rev = version;
     hash = "sha256-9ktAkqqPbH7Gd21qg8SUtuPAqoUBg6W1YFCoQ/sM68M=";
     fetchSubmodules = true;
