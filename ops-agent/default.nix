@@ -1,7 +1,6 @@
 {
   lib,
-  #fetchFromGitHub,
-  fetchzip,
+  fetchFromGitHub,
   buildGoModule,
 }:
 let
@@ -11,18 +10,12 @@ in
 buildGoModule {
   inherit pname version;
 
-  # TODO: Fix `tar: This does not look like a tar archive`
-  #src = fetchFromGitHub {
-  #  owner = "GoogleCloudPlatform";
-  #  repo = pname;
-  #  rev = version;
-  #  hash = "";
-  #};
-
-  # TODO: Replace this with fetchFromGitHub
-  src = fetchzip {
-    url = "https://github.com/GoogleCloudPlatform/${pname}/archive/refs/tags/${version}.tar.gz";
-    hash = "sha256-qvtk9pWzdSptD60EUPxxZ686hwM22iIN5k+bLM5mzPU=";
+  src = fetchFromGitHub {
+    owner = "GoogleCloudPlatform";
+    repo = pname;
+    rev = version;
+    hash = "sha256-9ktAkqqPbH7Gd21qg8SUtuPAqoUBg6W1YFCoQ/sM68M=";
+    fetchSubmodules = true;
   };
 
   vendorHash = "sha256-+va+DvV2ZJ9cPz/fww1KnPFuoAct6RbRMA4mlQA8xxw=";
